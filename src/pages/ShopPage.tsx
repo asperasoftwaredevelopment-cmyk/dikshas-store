@@ -10,8 +10,8 @@ export function ShopPage() {
       <ProductGrid
         active={active}
         onFilterChange={setActive}
-        heading="Shop Auréva"
-        subheading="Browse every category — or filter to find your next ritual."
+        heading="All products"
+        subheading="Soaps, face washes, serums, moisturizers, sunscreens, lip tints, and under-eye gels."
       />
     </div>
   )

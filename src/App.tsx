@@ -8,6 +8,9 @@ import { CustomBox } from './components/CustomBox'
 import { ScrollToTop } from './components/ScrollToTop'
 import { HomePage } from './pages/HomePage'
 import { ShopPage } from './pages/ShopPage'
+import { SkinTestPage } from './pages/SkinTestPage'
+import { AboutPage } from './pages/AboutPage'
+import { ContactPage } from './pages/ContactPage'
 
 export default function App() {
   return (
@@ -22,6 +25,9 @@ export default function App() {
               <Route path="/shop" element={<ShopPage />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/box" element={<CustomBox />} />
+              <Route path="/skin-test" element={<SkinTestPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

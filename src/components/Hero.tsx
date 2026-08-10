@@ -26,8 +26,8 @@ export function Hero() {
           <Link className="btn btn-primary" to={`/product/${hero.id}`}>
             Shop bestseller
           </Link>
-          <Link className="btn btn-ghost" to="/shop">
-            Explore all
+          <Link className="btn btn-ghost" to="/skin-test">
+            Take skin test
           </Link>
         </div>
       </div>
