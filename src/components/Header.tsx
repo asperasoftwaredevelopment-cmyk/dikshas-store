@@ -1,19 +1,43 @@
-import { ShoppingBag } from 'lucide-react'
+import { Link, NavLink } from 'react-router-dom'
+import { ShoppingBag, Menu, X } from 'lucide-react'
+import { useState } from 'react'
+import { brand } from '../data/products'
 import { useCart } from '../context/CartContext'
 
 export function Header() {
   const { itemCount, openCart } = useCart()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <header className="site-header">
-      <a href="#top" className="brand">
-        <span className="brand-mark" aria-hidden="true" />
-        <span className="brand-name">Diksha&apos;s Store</span>
-      </a>
+      <button
+        type="button"
+        className="menu-toggle"
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((v) => !v)}
+      >
+        {menuOpen ? <X size={22} /> : <Menu size={22} />}
+      </button>
 
-      <nav className="header-nav" aria-label="Primary">
-        <a href="#shop">Shop</a>
-        <a href="#about">About</a>
+      <Link to="/" className="brand" onClick={() => setMenuOpen(false)}>
+        <span className="brand-mark" aria-hidden="true" />
+        <span className="brand-name">{brand.name}</span>
+      </Link>
+
+      <nav
+        className={menuOpen ? 'header-nav is-open' : 'header-nav'}
+        aria-label="Primary"
+      >
+        <NavLink to="/shop" onClick={() => setMenuOpen(false)}>
+          Shop
+        </NavLink>
+        <NavLink to="/box" onClick={() => setMenuOpen(false)}>
+          Custom Box
+        </NavLink>
+        <a href="/#about" onClick={() => setMenuOpen(false)}>
+          About
+        </a>
       </nav>
 
       <button
