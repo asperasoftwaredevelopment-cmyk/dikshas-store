@@ -1,13 +1,6 @@
 import { Minus, Plus, X } from 'lucide-react'
 import { useCart } from '../context/CartContext'
-
-function formatPrice(value: number) {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0,
-  }).format(value)
-}
+import { formatPrice } from '../utils/format'
 
 export function CartDrawer() {
   const {
@@ -47,40 +40,47 @@ export function CartDrawer() {
         {items.length === 0 ? (
           <div className="cart-empty">
             <p>Your cart is empty.</p>
-            <button type="button" className="btn btn-primary" onClick={closeCart}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={closeCart}
+            >
               Continue shopping
             </button>
           </div>
         ) : (
           <>
             <ul className="cart-list">
-              {items.map(({ product, quantity }) => (
-                <li key={product.id} className="cart-item">
+              {items.map(({ key, product, variant, quantity }) => (
+                <li key={key} className="cart-item">
                   <div
                     className="cart-thumb"
                     style={{ backgroundColor: product.accent }}
                   >
-                    <img src={product.image} alt="" />
+                    <img src={variant.image || product.image} alt="" />
                   </div>
                   <div className="cart-item-body">
                     <div className="cart-item-top">
-                      <h3>{product.name}</h3>
+                      <h3>
+                        {product.name}
+                        <span className="cart-variant">{variant.label}</span>
+                      </h3>
                       <button
                         type="button"
                         className="text-btn"
-                        onClick={() => removeItem(product.id)}
+                        onClick={() => removeItem(key)}
                       >
                         Remove
                       </button>
                     </div>
                     <p className="cart-item-price">
-                      {formatPrice(product.price)}
+                      {formatPrice(variant.price)}
                     </p>
                     <div className="qty">
                       <button
                         type="button"
                         aria-label="Decrease quantity"
-                        onClick={() => setQuantity(product.id, quantity - 1)}
+                        onClick={() => setQuantity(key, quantity - 1)}
                       >
                         <Minus size={14} />
                       </button>
@@ -88,7 +88,7 @@ export function CartDrawer() {
                       <button
                         type="button"
                         aria-label="Increase quantity"
-                        onClick={() => setQuantity(product.id, quantity + 1)}
+                        onClick={() => setQuantity(key, quantity + 1)}
                       >
                         <Plus size={14} />
                       </button>
@@ -106,7 +106,11 @@ export function CartDrawer() {
               <button type="button" className="btn btn-primary btn-block">
                 Checkout
               </button>
-              <button type="button" className="text-btn clear-btn" onClick={clearCart}>
+              <button
+                type="button"
+                className="text-btn clear-btn"
+                onClick={clearCart}
+              >
                 Clear cart
               </button>
             </div>
