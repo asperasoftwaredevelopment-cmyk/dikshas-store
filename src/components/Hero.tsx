@@ -9,7 +9,7 @@ export function Hero() {
     <section className="hero" id="top" aria-labelledby="hero-heading">
       <div className="hero-media" aria-hidden="true">
         <img
-          src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=2000&q=80"
+          src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=2000&q=80"
           alt=""
         />
         <div className="hero-veil" />
