@@ -57,7 +57,7 @@ export function HomePage() {
       <ProductGrid
         active={active}
         onFilterChange={setActive}
-        heading="Shop all categories"
+        heading="All products"
         subheading="Soaps, face washes, serums, moisturizers, sunscreens, lip tints, and under-eye gels."
       />
 
@@ -74,7 +74,31 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="skin-cta" aria-labelledby="skin-cta-heading">
+        <div className="skin-cta-inner">
+          <p className="eyebrow">Skin test</p>
+          <h2 id="skin-cta-heading">Not sure where to start?</h2>
+          <p>
+            Take our three-question skin test for a Multani Mitti–led ritual
+            matched to your type and goals.
+          </p>
+          <Link to="/skin-test" className="btn btn-primary">
+            Take the skin test
+          </Link>
+        </div>
+      </section>
+
       <About />
+
+      <section className="contact-cta" aria-labelledby="contact-cta-heading">
+        <div className="contact-cta-inner">
+          <h2 id="contact-cta-heading">Talk to the studio</h2>
+          <p>Orders, ingredients, wholesale — we respond within a business day.</p>
+          <Link to="/contact" className="btn btn-secondary">
+            Contact us
+          </Link>
+        </div>
+      </section>
     </>
   )
 }

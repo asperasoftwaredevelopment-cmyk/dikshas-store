@@ -11,9 +11,14 @@ export function About() {
           time-honoured botanicals — clean formulas, sensorial textures, and
           results you can feel.
         </p>
-        <Link to="/box" className="btn btn-secondary">
-          Build a custom box
-        </Link>
+        <div className="hero-actions">
+          <Link to="/about" className="btn btn-secondary">
+            Our story
+          </Link>
+          <Link to="/box" className="btn btn-primary">
+            Build a custom box
+          </Link>
+        </div>
       </div>
       <div className="about-visual" aria-hidden="true">
         <img
@@ -34,9 +39,11 @@ export function Footer() {
       </div>
       <p>{brand.tagline}</p>
       <nav className="footer-nav" aria-label="Footer">
-        <Link to="/shop">Shop</Link>
+        <Link to="/shop">All Products</Link>
         <Link to="/box">Custom Box</Link>
-        <Link to="/product/multani-mitti-soap">Multani Mitti</Link>
+        <Link to="/skin-test">Skin Test</Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
       </nav>
       <p className="footer-note">
         © {new Date().getFullYear()} {brand.name}

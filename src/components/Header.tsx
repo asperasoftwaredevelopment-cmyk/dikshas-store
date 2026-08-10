@@ -4,6 +4,14 @@ import { useState } from 'react'
 import { brand } from '../data/products'
 import { useCart } from '../context/CartContext'
 
+const links = [
+  { to: '/shop', label: 'All Products' },
+  { to: '/box', label: 'Custom Box' },
+  { to: '/skin-test', label: 'Skin Test' },
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' },
+]
+
 export function Header() {
   const { itemCount, openCart } = useCart()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -29,15 +37,15 @@ export function Header() {
         className={menuOpen ? 'header-nav is-open' : 'header-nav'}
         aria-label="Primary"
       >
-        <NavLink to="/shop" onClick={() => setMenuOpen(false)}>
-          Shop
-        </NavLink>
-        <NavLink to="/box" onClick={() => setMenuOpen(false)}>
-          Custom Box
-        </NavLink>
-        <a href="/#about" onClick={() => setMenuOpen(false)}>
-          About
-        </a>
+        {links.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            onClick={() => setMenuOpen(false)}
+          >
+            {link.label}
+          </NavLink>
+        ))}
       </nav>
 
       <button
